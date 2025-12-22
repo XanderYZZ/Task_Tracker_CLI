@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 23)
 
 add_executable(Task_Tracker_CLI
     src/main.cpp
+    src/File.cpp
 )
 
 target_include_directories(Task_Tracker_CLI PRIVATE

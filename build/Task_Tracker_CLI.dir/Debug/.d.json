@@ -1,9 +1,10 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\larns\\onedrive\\desktop\\programming_projects\\personal\\c_and_cpp\\task_tracker_cli\\src\\main.cpp",
+        "Source": "c:\\users\\larns\\onedrive\\desktop\\programming_projects\\personal\\c_and_cpp\\task_tracker_cli\\src\\file.cpp",
         "ProvidedModule": "",
         "Includes": [
+            "c:\\users\\larns\\onedrive\\desktop\\programming_projects\\personal\\c_and_cpp\\task_tracker_cli\\include\\file.hpp",
             "c:\\users\\larns\\onedrive\\desktop\\programming_projects\\personal\\c_and_cpp\\task_tracker_cli\\include\\task.hpp",
             "c:\\program files (x86)\\microsoft visual studio\\2022\\buildtools\\vc\\tools\\msvc\\14.44.35207\\include\\iostream",
             "c:\\program files (x86)\\microsoft visual studio\\2022\\buildtools\\vc\\tools\\msvc\\14.44.35207\\include\\yvals_core.h",
@@ -160,11 +161,11 @@
             "c:\\program files (x86)\\microsoft visual studio\\2022\\buildtools\\vc\\tools\\msvc\\14.44.35207\\include\\string",
             "c:\\program files (x86)\\microsoft visual studio\\2022\\buildtools\\vc\\tools\\msvc\\14.44.35207\\include\\vector",
             "c:\\program files (x86)\\microsoft visual studio\\2022\\buildtools\\vc\\tools\\msvc\\14.44.35207\\include\\array",
+            "c:\\program files (x86)\\microsoft visual studio\\2022\\buildtools\\vc\\tools\\msvc\\14.44.35207\\include\\string_view",
             "c:\\program files (x86)\\microsoft visual studio\\2022\\buildtools\\vc\\tools\\msvc\\14.44.35207\\include\\fstream",
             "c:\\program files (x86)\\microsoft visual studio\\2022\\buildtools\\vc\\tools\\msvc\\14.44.35207\\include\\algorithm",
             "c:\\program files (x86)\\microsoft visual studio\\2022\\buildtools\\vc\\tools\\msvc\\14.44.35207\\include\\__msvc_heap_algorithms.hpp",
-            "c:\\program files (x86)\\microsoft visual studio\\2022\\buildtools\\vc\\tools\\msvc\\14.44.35207\\include\\__msvc_minmax.hpp",
-            "c:\\program files (x86)\\microsoft visual studio\\2022\\buildtools\\vc\\tools\\msvc\\14.44.35207\\include\\string_view"
+            "c:\\program files (x86)\\microsoft visual studio\\2022\\buildtools\\vc\\tools\\msvc\\14.44.35207\\include\\__msvc_minmax.hpp"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

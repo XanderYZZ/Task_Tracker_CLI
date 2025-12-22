@@ -1,75 +1,31 @@
-#include "Task.hpp"
-#include <fstream>
-#include <algorithm>
-#include <string_view>
-#include <memory>
+#include "File.hpp"
 
-std::vector<std::unique_ptr<TaskSpace::Task>> tasks;
+int main(int argc, char* argv[]) {
+    // Start by reading from the file.
+    File file("tasks.json");
+    file.ReadTasksFromFile();
 
-void ReadTasksFromFile() {
-    std::ifstream file("tasks.json");
+    int i = 1;
 
-    if (!file.is_open()) {
-        std::cerr << "Could not open!";
-    } else {
-        std::string line;
-        TaskSpace::TaskData data{};
+    while (i < argc) {
+        std::string command = argv[i];
 
-        while (std::getline(file, line)) {
-            if (line.size() <= 1) { continue; } // The first and last lines with just brackets on the first character.
-
-            int i = 0;
-            std::string curr_key = "", in_paren = "";
-
-            while (i < line.size()) {
-                if (line[i] == '"' && line[i + 1] != ':') {
-                    i++;
-
-                    while (line[i] != '"') {
-                        in_paren += line[i];
-                        i++;
-                    }
-
-                    // If the previous token was a key, then this new value is the value for that key
-                    if (curr_key != "") {
-                        if (curr_key == "status") {
-                            data.status = in_paren;
-                        } else if (curr_key == "description") {
-                            data.description = in_paren;
-                        } else if (curr_key == "creation_time") {
-                            data.creation_time = in_paren;
-                        } else if (curr_key == "updated_time") {
-                            data.updated_time = in_paren;
-                        }
-
-                        curr_key = "";
-                    } else {
-                        bool found = std::ranges::contains(TaskSpace::TASK_FIELDS, in_paren);
-                        
-                        if (found) {
-                            curr_key = in_paren;
-                            in_paren = "";
-                        }
-                    }
-                } else if (line[i] == '{') {
-                    data.id = std::stoi(in_paren);
-                } else if (line[i] == '}') {
-                    TaskSpace::Task copy = data;
-                    tasks.push_back(std::make_unique<TaskSpace::Task>(copy));
-                    data = {};
-                }
-
-                i++;
+        if (command == "add") {
+            if (i + 1 < argc) {
+                std::string task_name = argv[++i];
+                file.AddTask(task_name);
+            }
+        } else if (command == "update") {
+            if (i + 2 < argc) {
+                int task_id = std::stoi(argv[++i]);
+                std::string new_task_name = argv[++i];
+                file.UpdateTask(task_id, new_task_name);
             }
         }
+
+        i++;
     }
-}
 
-void ListenToUserInput() {
-
-}
-
-int main() {
-    ReadTasksFromFile();
-    ListenToUserInput();
+    // End by writing to the file.
+    file.WriteTasksToFile();
 }

@@ -325,6 +325,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\larns\OneDrive\Desktop\Programming_Projects\Personal\C_AND_CPP\Task_Tracker_CLI\src\main.cpp" />
+    <ClCompile Include="C:\Users\larns\OneDrive\Desktop\Programming_Projects\Personal\C_AND_CPP\Task_Tracker_CLI\src\File.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
