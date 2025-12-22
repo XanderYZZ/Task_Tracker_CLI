@@ -1,0 +1,2 @@
+This is a task tracker CLI written in C++ without the use of any external libraries, aside from the standard libraries that C++ already provides you with.
+My motivation for the project idea can be found here: https://roadmap.sh/projects/task-tracker.
