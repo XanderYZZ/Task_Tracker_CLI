@@ -16,6 +16,7 @@ public:
     void UpdateTask(const int &task_id, const std::string &new_task_name);
     void DeleteTask(const int &task_id);
     void ListTasks(const std::string &status);
+    void MarkTask(const int &task_id, const std::string &status);
 
 private:
     std::string file_name;

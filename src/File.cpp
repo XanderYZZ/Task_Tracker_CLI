@@ -127,3 +127,15 @@ void File::ListTasks(const std::string &status) {
         }
     }
 }
+
+void File::MarkTask(const int &task_id, const std::string &status) {
+    auto task = std::find_if(tasks.begin(), tasks.end(), [task_id](const auto &t) { return t->GetData().id == task_id; });
+
+    if (task != tasks.end()) {
+        TaskSpace::TaskData data = task->get()->GetData();
+        data.status = status;
+        task->get()->SetData(data);
+    } else {
+        std::cerr << "Task not found!";
+    }
+}

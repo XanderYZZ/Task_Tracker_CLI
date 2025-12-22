@@ -7,6 +7,9 @@
     <ClCompile Include="C:\Users\larns\OneDrive\Desktop\Programming_Projects\Personal\C_AND_CPP\Task_Tracker_CLI\src\File.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\larns\OneDrive\Desktop\Programming_Projects\Personal\C_AND_CPP\Task_Tracker_CLI\src\Task.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\larns\OneDrive\Desktop\Programming_Projects\Personal\C_AND_CPP\Task_Tracker_CLI\CMakeLists.txt" />
