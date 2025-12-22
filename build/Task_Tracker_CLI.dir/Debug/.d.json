@@ -1,7 +1,7 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\larns\\onedrive\\desktop\\programming_projects\\personal\\c_and_cpp\\task_tracker_cli\\src\\file.cpp",
+        "Source": "c:\\users\\larns\\onedrive\\desktop\\programming_projects\\personal\\c_and_cpp\\task_tracker_cli\\src\\main.cpp",
         "ProvidedModule": "",
         "Includes": [
             "c:\\users\\larns\\onedrive\\desktop\\programming_projects\\personal\\c_and_cpp\\task_tracker_cli\\include\\file.hpp",

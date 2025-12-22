@@ -98,3 +98,32 @@ void File::UpdateTask(const int &task_id, const std::string &new_task_name) {
         std::cerr << "Task not found!";
     }
 }
+
+void File::DeleteTask(const int &task_id) {
+    auto task = std::find_if(tasks.begin(), tasks.end(), [task_id](const auto &t) { return t->GetData().id == task_id; });
+
+    if (task != tasks.end()) {
+        tasks.erase(task);
+
+        for (auto &t : tasks) {
+            TaskSpace::TaskData data = t.get()->GetData();
+
+            if (data.id < task_id) { continue; }
+
+            data.id--;
+            t.get()->SetData(data);
+        }
+    } else {
+        std::cerr << "Task not found!";
+    }
+}
+
+void File::ListTasks(const std::string &status) {
+    for (const auto& task : tasks) {
+        TaskSpace::TaskData data = task->GetData();
+
+        if (status == "" || data.status == status) {
+            std::cout << data;
+        }
+    }
+}
