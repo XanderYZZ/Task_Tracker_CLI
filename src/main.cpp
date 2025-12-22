@@ -2,8 +2,11 @@
 #include <fstream>
 #include <algorithm>
 #include <string_view>
+#include <memory>
 
-int main() {
+std::vector<std::unique_ptr<TaskSpace::Task>> tasks;
+
+void ReadTasksFromFile() {
     std::ifstream file("tasks.json");
 
     if (!file.is_open()) {
@@ -19,58 +22,54 @@ int main() {
             std::string curr_key = "", in_paren = "";
 
             while (i < line.size()) {
-                switch(line[i]) {
-                    case '"':
-                        if (line[i + 1] != ':') {
-                            i++;
+                if (line[i] == '"' && line[i + 1] != ':') {
+                    i++;
 
-                            while (line[i] != '"') {
-                                in_paren += line[i];
-                                i++;
-                            }
+                    while (line[i] != '"') {
+                        in_paren += line[i];
+                        i++;
+                    }
 
-                            // If the previous token was a key, then this new value is the value for that key
-                            if (curr_key != "") {
-                                if (curr_key == "status") {
-                                    data.status = in_paren;
-                                } else if (curr_key == "description") {
-                                    data.description = in_paren;
-                                } else if (curr_key == "creation_time") {
-                                    data.creation_time = in_paren;
-                                } else if (curr_key == "updated_time") {
-                                    data.updated_time = in_paren;
-                                }
-
-                                curr_key = "";
-                            } else {
-                                bool found = std::ranges::contains(TaskSpace::TASK_FIELDS, in_paren);
-                                
-                                if (found) {
-                                    curr_key = in_paren;
-                                    in_paren = "";
-                                }
-                            }
-
-                            i++;
+                    // If the previous token was a key, then this new value is the value for that key
+                    if (curr_key != "") {
+                        if (curr_key == "status") {
+                            data.status = in_paren;
+                        } else if (curr_key == "description") {
+                            data.description = in_paren;
+                        } else if (curr_key == "creation_time") {
+                            data.creation_time = in_paren;
+                        } else if (curr_key == "updated_time") {
+                            data.updated_time = in_paren;
                         }
 
-                        break;
-
-                    case '{':
-                        data.id = std::stoi(in_paren);
-                        i++;
-
-                        break;
-
-                    case '}':
-                        std::cout << data << "\n\n";
-                        std::cout << "End of entry!\n";
-                        data = {};
-
-                    default:
-                        i++;
+                        curr_key = "";
+                    } else {
+                        bool found = std::ranges::contains(TaskSpace::TASK_FIELDS, in_paren);
+                        
+                        if (found) {
+                            curr_key = in_paren;
+                            in_paren = "";
+                        }
+                    }
+                } else if (line[i] == '{') {
+                    data.id = std::stoi(in_paren);
+                } else if (line[i] == '}') {
+                    TaskSpace::Task copy = data;
+                    tasks.push_back(std::make_unique<TaskSpace::Task>(copy));
+                    data = {};
                 }
+
+                i++;
             }
         }
     }
+}
+
+void ListenToUserInput() {
+
+}
+
+int main() {
+    ReadTasksFromFile();
+    ListenToUserInput();
 }

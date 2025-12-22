@@ -25,14 +25,15 @@ namespace TaskSpace {
             << "Status: " << obj.status << "\n"
             << "Creation Time: " << obj.creation_time << "\n"
             << "Updated Time: " << obj.updated_time << "\n";
-            
+
             return os;
         }
     };
 
     class Task {
     public:
-        
+        Task(const TaskSpace::TaskData &data) : data(data) {};
+        TaskSpace::TaskData GetData() const { return data; }
 
     private:
         TaskSpace::TaskData data;
